@@ -1,5 +1,10 @@
 {
   "name": "Mirovozzrenie HR Modern",
   "description": "A modern, high-conversion landing page for the HR agency Mirovozzrenie, featuring clean aesthetics, professional layout, and interactive service sections.",
-  "requestFramePermissions": []
+  "requestFramePermissions": [],
+  "deployment": {
+    "provider": "vercel",
+    "buildCommand": null,
+    "outputDirectory": "."
+  }
 }

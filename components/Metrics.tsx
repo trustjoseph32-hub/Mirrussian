@@ -45,8 +45,8 @@ const Metrics: React.FC = () => {
         </div>
 
         {/* 
-          Mobile: Sticky stack effect
-          Desktop: Standard grid
+          Mobile: Sticky stack effect (sticky classes removed on md+)
+          Desktop: Standard grid (md:static)
         */}
         <div className="flex flex-col md:grid md:grid-cols-2 gap-6 md:gap-10 max-w-7xl mx-auto">
           {approaches.map((item, i) => (
@@ -54,7 +54,7 @@ const Metrics: React.FC = () => {
               key={i} 
               className={`
                 reveal
-                sticky top-[100px] md:static
+                sticky md:static top-[100px]
                 ${item.color} 
                 p-8 md:p-12 
                 rounded-[2.5rem] md:rounded-[3.5rem] 
@@ -65,7 +65,6 @@ const Metrics: React.FC = () => {
               `}
               style={{ 
                 zIndex: i + 1,
-                marginTop: i > 0 ? '0' : '0',
                 transitionDelay: `${i * 100}ms`
               }}
             >
