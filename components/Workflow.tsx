@@ -30,12 +30,29 @@ const steps = [
 ];
 
 const Workflow: React.FC = () => {
+  const scrollToContact = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const element = document.getElementById('contact');
+    if (element) {
+      const offset = 80;
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <section className="section-padding bg-brand-dark text-white">
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mb-24 reveal">
           <h2 className="text-brand-primary font-black uppercase tracking-[0.4em] text-[10px] mb-6">Методология</h2>
-          <h3 className="text-5xl md:text-6xl font-extrabold italic tracking-tighter">Как мы <span className="text-slate-500">работаем</span></h3>
+          <h3 className="text-5xl md:text-6xl font-extrabold italic tracking-tighter">Как мы <span className="text-slate-50">работаем</span></h3>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
@@ -66,9 +83,12 @@ const Workflow: React.FC = () => {
             <h4 className="text-2xl font-bold mb-2">Нужен индивидуальный подход?</h4>
             <p className="text-slate-400 font-medium">Мы адаптируем воронку под специфику вашего бизнеса и сложность роли.</p>
           </div>
-          <a href="#contact" className="btn-primary text-white px-10 py-5 rounded-2xl font-bold text-xs uppercase tracking-widest whitespace-nowrap">
+          <button 
+            onClick={scrollToContact} 
+            className="btn-primary text-white px-10 py-5 rounded-2xl font-bold text-xs uppercase tracking-widest whitespace-nowrap outline-none"
+          >
             Заказать консультацию
-          </a>
+          </button>
         </div>
       </div>
     </section>

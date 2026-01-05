@@ -29,6 +29,23 @@ const About: React.FC = () => {
     }
   ];
 
+  const scrollToContact = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const element = document.getElementById('contact');
+    if (element) {
+      const offset = 80;
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <section id="about" className="pt-16 pb-12 bg-white overflow-hidden scroll-mt-20">
       <div className="container mx-auto px-6">
@@ -60,12 +77,12 @@ const About: React.FC = () => {
               </div>
               
               <div className="reveal delay-300">
-                <a href="#contact" className="inline-flex items-center gap-4 text-brand-dark font-black uppercase tracking-widest text-xs group">
+                <button onClick={scrollToContact} className="inline-flex items-center gap-4 text-brand-dark font-black uppercase tracking-widest text-xs group outline-none">
                   <span className="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center group-hover:bg-brand-dark group-hover:text-white transition-all">
                     <i className="fas fa-arrow-right"></i>
                   </span>
                   Обсудить ваш кейс
-                </a>
+                </button>
               </div>
             </div>
           </div>
@@ -129,12 +146,12 @@ const About: React.FC = () => {
                 </p>
               </div>
               <div className="relative z-10 lg:w-1/3 flex justify-center lg:justify-end">
-                <a href="#contact" className="group flex flex-col items-center gap-4">
+                <button onClick={scrollToContact} className="group flex flex-col items-center gap-4 outline-none">
                   <div className="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center text-brand-primary text-3xl md:text-4xl shadow-2xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-12">
                     <i className="fas fa-arrow-down"></i>
                   </div>
                   <span className="text-white font-black uppercase text-[10px] tracking-widest opacity-60 group-hover:opacity-100 transition-opacity">Получить презентацию</span>
-                </a>
+                </button>
               </div>
             </div>
           </div>
